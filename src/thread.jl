@@ -3,7 +3,13 @@
     tmap(f, A::AbstractArray{T}) where {T}
 
 ```jldoctest
-tmap(x->x*2, 1:10)
+julia> tmap(x->x*2, 1:5)
+5-element Vector{Int64}:
+  2
+  4
+  6
+  8
+ 10
 ```
 """
 function tmap(f, A, T)
@@ -21,7 +27,7 @@ tmap(f, A::AbstractArray{T}) where {T} = tmap(f, A, T)
 # Example
 ```jldoctest
 julia> pick(==(15), 10:20)
-5
+15
 ```
 """
 function pick(predicate, A)
