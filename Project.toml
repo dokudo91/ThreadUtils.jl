@@ -1,0 +1,4 @@
+name = "ThreadUtils"
+uuid = "69d2f570-dc21-4a8f-aa8d-f406daf51f0a"
+authors = ["dokudo91 <92647519+dokudo91@users.noreply.github.com>"]
+version = "0.1.0"
