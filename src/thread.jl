@@ -2,6 +2,7 @@
     tmap(f, A, T)
     tmap(f, A::AbstractArray{T}) where {T}
 
+# Example
 ```jldoctest
 julia> tmap(x->x*2, 1:5)
 5-element Vector{Int64}:
