@@ -1,6 +1,7 @@
 """
     tmap(f, A, T)
     tmap(f, A::AbstractArray{T}) where {T}
+    tmap!(f, A::AbstractArray)
 
 # Example
 ```jldoctest
@@ -11,6 +12,15 @@ julia> tmap(x->x*2, 1:5)
   6
   8
  10
+
+julia> a = [1 2 3; 4 5 6];
+
+julia> tmap!(x->x*2, a);
+
+julia> a
+2×3 Matrix{Int64}:
+  4   8  12
+ 16  20  24
 ```
 """
 function tmap(f, A, T)
@@ -21,6 +31,12 @@ function tmap(f, A, T)
     a
 end
 tmap(f, A::AbstractArray{T}) where {T} = tmap(f, A, T)
+function tmap!(f, A::AbstractArray)
+    Threads.@threads for (i, x) in enumerate(A) |> collect
+        A[i] = f(x)
+    end
+    A
+end
 
 """
     pick(predicate, A)
