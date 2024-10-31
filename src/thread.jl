@@ -15,8 +15,9 @@ julia> tmap(x->x*2, 1:5)
 ```
 """
 function tmap(f, A, T)
-    a = Array{T}(undef, size(A)...)
-    Threads.@threads for (i, x) in enumerate(A) |> collect
+    enumA = enumerate(A) |> collect
+    a = Array{T}(undef, size(enumA)...)
+    Threads.@threads for (i, x) in enumA
         a[i] = f(x)
     end
     a
