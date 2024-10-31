@@ -50,3 +50,20 @@ function pick(predicate, A)
         A[index[]]
     end
 end
+
+"""
+    tfilter(f, A)
+
+# Example
+```jldoctest
+julia> tfilter(isodd, 1:5)
+3-element Vector{Int64}:
+ 1
+ 3
+ 5
+```
+"""
+function tfilter(f, A)
+    bools = tmap(f, A, Bool)
+    A[bools]
+end
