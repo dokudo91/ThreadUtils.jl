@@ -1,4 +1,4 @@
 module ThreadUtils
-export tmap, pick, tfilter
+export tmap, tmap!, pick, tfilter
 include("thread.jl")
 end # module ThreadUtils
