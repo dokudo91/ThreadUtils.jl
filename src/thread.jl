@@ -65,6 +65,7 @@ julia> tfilter(isodd, 1:5)
 ```
 """
 function tfilter(f, A)
-    bools = tmap(f, A, Bool)
-    A[bools]
+    collectA = A |> collect
+    bools = tmap(f, collectA, Bool)
+    collectA[bools]
 end
